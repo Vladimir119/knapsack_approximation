@@ -1,0 +1,2 @@
+# knapsack_approximation
+Knapsack Polynomial approximation algorithm
