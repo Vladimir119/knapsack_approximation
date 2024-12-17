@@ -1,0 +1,209 @@
+\documentclass[a4paper,12pt]{extarticle}
+
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{latexsym,amsthm,amsmath,amssymb,amsxtra,stmaryrd}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{tempora}
+\usepackage{graphicx,multicol}
+\usepackage{url}
+\usepackage[russian]{babel}
+\usepackage{indentfirst} %отступ в первом абзаце
+\usepackage{hhline}
+\usepackage{icomma} %запятая как точка без пробела в формулах
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mwe}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{tikzpeople}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{fancyhdr} % для колонтитулов
+\usepackage{lipsum}
+
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+\newcommand\doubletab[1][1.3cm]{\hspace*{#1}}
+\newcommand\tripletab[1][2.4cm]{\hspace*{#1}}
+\newcommand*\xor{\mathbin{\oplus}}
+\newtheorem{theorem}{Теорема}[section]
+
+\newtheorem{df}[theorem]{Определение}
+\newtheorem{teo}[theorem]{Теорема}
+\newtheorem{lem}[theorem]{Лемма}
+\newtheorem{prp}[theorem]{Предложение}
+\newtheorem*{hyp}{Предположение}
+\newtheorem{ass}[theorem]{Утверждение}
+\newtheorem{cor}[theorem]{Следствие}
+\newtheorem*{ev}{Доказательство}
+\newtheorem{ntc}[theorem]{Замечание}
+
+
+\newcommand{\al}{{\alpha}}
+\newcommand{\bet}{{\beta}}
+\newcommand{\de}{{\delta}}
+\newcommand{\De}{{\Delta}}
+\newcommand{\om}{{\omega}}
+\newcommand{\ph}{{\varphi}}
+\newcommand{\ep}{{\varepsilon}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\na}{{\nabla}}
+\newcommand{\Hom}{\mathop{\rm Hom}\nolimits}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\cC}{{\cal C}}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\newcommand{\xp}{\boxplus}
+
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cT}{{\cal T}}
+\newcommand{\cK}{{\cal K}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cQH}{{\cal QH}}
+\newcommand{\cMH}{{\cal MH}}
+\newcommand{\cMHk}{{{\cal MH}_k}}
+
+\newcommand{\TT}{\mathbb{T}}
+
+\newcommand{\ba}{{\bf a}}
+\newcommand{\bo}{{\bf 0}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\bL}{{\bf L}}
+
+\newcommand{\mto}{\mapsto}
+
+\newcommand{\ov}{\overline}
+\newcommand{\un}{\underline}
+
+\newcommand{\op}{{\oplus}}
+
+\newcommand{\ovp}{\overline{p}}
+\newcommand{\unp}{\underline{p}}
+
+\newcommand{\setz}{\setminus\{0\}}
+\newcommand{\til}{\widetilde}
+
+\newcommand{\cF}{{\cal F}}
+
+\newcommand*{\EN}{\mathsf{M}}
+\newcommand*{\D}{\mathsf{D}}
+\newcommand*{\cov}{\mathsf{cov}}
+\newcommand*{\corr}{\mathsf{corr}}
+\newcommand*{\prob}{\mathsf{P}}
+\newcommand{\Ind}{\mathop{\rm Ind}\nolimits}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\eqdef}{\stackrel{\mathrm{def}}{=}}
+\newcommand*{\HH}[1]{\mathcal{H}\left( #1\right) }
+\newcommand*{\Int}{\int\limits}
+\newcommand*{\SUM}{\sum\limits}
+\newcommand*{\Exp}[1]{\exp\left\{ #1 \right\}}
+\renewcommand*{\Pr}[1]{\prob\left( #1 \right)}
+
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
+\newcolumntype{J}[1]{>{\hsize=#1\hsize\noindent\justifying\arraybackslash}X}%
+
+\newcommand{\T}{\rule{0pt}{2.3ex}} %top strut
+\newcommand{\B}{\rule[-2ex]{0pt}{0ex}} %bottom strut
+\usepackage{fourier-orns}
+
+\title{Пороговые подписи} 
+\author{ Юрченко В.А.$^{1}$\\
+	$^{1}$ МФТИ ФПМИ,	\\	
+}
+
+% \date{\today}
+% \pagestyle{myheadings}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \renewcommand{\headrule}{
+% 	\vspace{-8pt}\hrulefill
+% 	\raisebox{-2.1pt}{\quad\decofourleft\decotwo\decofourright\quad}\hrulefill}
+	
+\begin{document}
+
+\section*{Knapsack}
+
+\fbox{\begin{minipage}{35em}
+\textbf{Given:}
+\begin{itemize}
+	\item weights $w[i] \text{, } i=\overline{1,n}$ 
+	\item values $c[i] \text{, } i=\overline{1,n}$ 
+	\item $W$ - maximum wight, capacity of teh knapsack 
+\end{itemize}
+
+\textbf{Find subset of items I such that:}
+\begin{itemize}
+	\item The total weight of items in $I$ does not exceed $W$, $\sum_{i \in I} w[i] \leq W$
+	\item The total vlue of items in $I$ is maximized $W$, $max_{I \subset \{1, \dots, n\}} \sum_{i \in I} c[i] $
+\end{itemize}
+\end{minipage}}
+
+\section*{Base knapsack solution}
+
+\begin{itemize}
+	\item[-] $dp[i][с]$ - stores the minimal achievable weight for the first $i$ elements with values c.
+	\item[-] $0 \leq i \leq n$, $0 \leq c \leq C$ 
+	\item[-] dp recalc: \\
+	\[
+	dp[i][c] =
+	\begin{cases} 
+	dp[i-1][c], & \text{если } c[i] > c, \\
+	\min\left(dp[i-1][c], dp[i-1][c - c[i]] + w[i]\right), & \text{иначе}.
+	\end{cases}
+	\]
+
+\end{itemize}
+
+\textbf{final asymptotics: $\underline{O}(n * C_{max})$}
+
+\section*{Approximation polynomial knapsack}
+
+\fbox{\begin{minipage}{35em}
+\textbf{Given:}
+\begin{itemize}
+	\item weights $w[i] \text{, } i=\overline{1,n}$ 
+	\item values $c[i] \text{, } i=\overline{1,n}$ 
+	\item $W$ - maximum weights, capacity of the knapsack 
+	\item $\varepsilon$ - acceptable error.
+\end{itemize}
+
+\textbf{Find subset of items I such that:}
+\begin{itemize}
+	\item The total weight of items in $I$ does not exceed $W$, $\sum_{i \in I} w[i] \leq W$
+	\item Maximum the total vlue of items in $I$ differs from the real answer by no more than $1+\varepsilon$
+	\item The algorithm works in polynomial asymptotics.
+\end{itemize}
+\end{minipage}}
+
+\section*{Approximated polynomial solution}
+
+\begin{enumerate}
+	\item Find $K = \frac{\varepsilon * C_{max}}{n}$, $C_{max} = max_{i=\overline{1,n}} c[i]$
+	\item $c^{'}[i] = \lfloor{\frac{c[i]}{K}} \rfloor$
+	\item Solve based knapsack problem with $c^{'}[i]$
+\end{enumerate}
+
+\textbf{final asymptotics: $\underline{O}(n^2 \lfloor \frac{C_{max}}{K} \rfloor) = \underline{O}(n^2 \lfloor \frac{n}{\varepsilon} \rfloor)$}
+
+\textbf{Correct:} 
+\href{https://math.mit.edu/~goemans/18434S06/knapsack-katherine.pdf}{Proof of the correctness of this algorithm}.
+
+
+\end{document}
