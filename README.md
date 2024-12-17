@@ -5,25 +5,23 @@ This project focuses on solving the **Knapsack Problem**, a classic optimization
 
 ### Knapsack Problem Statement
 Given:
-- A set of \( n \) items, each with:
-  - Weight \( w[i] \)
-  - Value \( c[i] \)
-- A maximum weight capacity \( W \) of the knapsack.
+- A set of $n$ items, each with:
+  - Weight $w[i]$
+  - Value $c[i]$
+- A maximum weight capacity $W$ of the knapsack.
 
-Find a subset of items \( M \) such that:
-- The total weight of items in \( M \) does not exceed \( W \).
-- The total value of items in \( M \) is maximized.
+Find a subset of items $I$ such that:
+- The total weight of items in $I$ does not exceed $W$.
+- The total value of items in $I$ is maximized.
 
 Mathematically:
-$$
-\text{maximize } \sum_{x \in M} c(x), \quad \text{subject to } \sum_{x \in M} w(x) \leq W.
-$$
+$\text{maximize} \sum_{i \in I} c[i], \quad \text{s.t.} \sum_{i \in I} w[i] \leq W$
 
 ### Polynomial-Time Approximation Scheme (PTAS)
-The PTAS implemented in this repository provides a solution that is within a factor of \( (1 + \varepsilon) \) of the optimal solution. It uses **value scaling** to reduce the size of the search space, ensuring that the algorithm runs in polynomial time with respect to \( n \) and \( \frac{1}{\varepsilon} \).
+The PTAS implemented in this repository provides a solution that is within a factor of $(1 + \varepsilon)$ of the optimal solution. It uses **value scaling** to reduce the size of the search space, ensuring that the algorithm runs in polynomial time with respect to $n$ and $\frac{1}{\varepsilon}$.
 
 ### Exact Solution
-For comparison, an exact solution is implemented using dynamic programming, which ensures the optimal result but may not scale efficiently for large \( n \).
+For comparison, an exact solution is implemented using dynamic programming, which ensures the optimal result but may not scale efficiently for large $n$.
 
 ## Repository Structure
 ```
