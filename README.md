@@ -15,9 +15,9 @@ Find a subset of items \( M \) such that:
 - The total value of items in \( M \) is maximized.
 
 Mathematically:
-\[
+$$
 \text{maximize } \sum_{x \in M} c(x), \quad \text{subject to } \sum_{x \in M} w(x) \leq W.
-\]
+$$
 
 ### Polynomial-Time Approximation Scheme (PTAS)
 The PTAS implemented in this repository provides a solution that is within a factor of \( (1 + \varepsilon) \) of the optimal solution. It uses **value scaling** to reduce the size of the search space, ensuring that the algorithm runs in polynomial time with respect to \( n \) and \( \frac{1}{\varepsilon} \).
