@@ -1,58 +1,60 @@
-# Knapsack Approximation Project
+# Проект "Приближённое решение задачи о рюкзаке"
 
-## Overview
-This project focuses on solving the **Knapsack Problem**, a classic optimization problem. It includes both an exact solution and a polynomial-time approximation scheme (PTAS) for achieving a solution with a guaranteed approximation error of \( \varepsilon \).
+## Обзор
+Данный проект посвящён решению **задачи о рюкзаке**, классической задачи оптимизации. Включает как точное решение, так и схему приближённого решения за полиномиальное время (PTAS), обеспечивающую гарантированную ошибку приближения в \( \varepsilon \).
 
-### Knapsack Problem Statement
-Given:
-- A set of $n$ items, each with:
-  - Weight $w[i]$
-  - Value $c[i]$
-- A maximum weight capacity $W$ of the knapsack.
+### Постановка задачи о рюкзаке
+Дано:
+- Набор из $n$ предметов, каждый из которых имеет:
+  - Вес $w[i]$
+  - Стоимость $c[i]$
+- Максимальную грузоподъёмность рюкзака $W$.
 
-Find a subset of items $I$ such that:
-- The total weight of items in $I$ does not exceed $W$.
-- The total value of items in $I$ is maximized.
+Требуется найти подмножество предметов $I$, такое что:
+- Суммарный вес предметов в $I$ не превышает $W$.
+- Суммарная стоимость предметов в $I$ максимальна.
 
-Mathematically:
-$\text{maximize} \sum_{i \in I} c[i], \quad \text{s.t.} \sum_{i \in I} w[i] \leq W$
+Математически:
+$$
+\text{maximize} \sum_{i \in I} c[i], \quad \text{s.t.} \sum_{i \in I} w[i] \leq W
+$$
 
-### Polynomial-Time Approximation Scheme (PTAS)
-The PTAS implemented in this repository provides a solution that is within a factor of $(1 + \varepsilon)$ of the optimal solution. It uses **value scaling** to reduce the size of the search space, ensuring that the algorithm runs in polynomial time with respect to $n$ and $\frac{1}{\varepsilon}$.
+### Схема приближённого решения за полиномиальное время (PTAS)
+PTAS, реализованная в этом репозитории, предоставляет решение, которое отличается от оптимального не более чем на множитель \((1 + \varepsilon)\). Для этого используется метод **масштабирования стоимости**, позволяющий сократить размер пространства поиска и обеспечить полиномиальное время работы алгоритма в зависимости от $n$ и $\frac{1}{\varepsilon}$.
 
-### Exact Solution
-For comparison, an exact solution is implemented using dynamic programming, which ensures the optimal result but may not scale efficiently for large $n$.
+### Точное решение
+Для сравнения реализовано точное решение с использованием динамического программирования. Оно гарантирует оптимальный результат, но может быть неэффективным при больших $n$.
 
-## Repository Structure
+## Структура репозитория
 ```
 knapsack_approximation/
 |-- src/
 |   |-- base_knapsack
-|       |-- np_knapsack.py                   # Contains base algorithm
+|       |-- np_knapsack.py                   # Базовый алгоритм
 |   |-- approximation_knapsack
-|       |-- approximation_knapsack.py        # Contains the approximation algorithm
+|       |-- approximation_knapsack.py        # Алгоритм приближённого решения
 |-- tests/
-|   |-- unit.py                              # Tests
+|   |-- unit.py                              # Тесты
 |-- tex/
-|   |-- desc.tex                             # tex file sources
-|-- requirements.txt                         # Dependencies
-|-- desc.pdf                                 # Theoretical description of the product
-|-- README.md                                # This file
+|   |-- desc.tex                             # Исходники TeX
+|-- requirements.txt                         # Зависимости
+|-- desc.pdf                                 # Теоретическое описание проекта
+|-- README.md                                # Этот файл
 ```
 
-## How to Run
-1. Clone the repository:
+## Как запустить
+1. Клонируйте репозиторий:
    ```bash
    git clone https://github.com/your-username/knapsack-approximation.git
    cd knapsack-approximation
    ```
 
-2. Install dependencies:
+2. Установите зависимости:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run tests:
+3. Запустите тесты:
    ```bash
    chmod +x start.sh
    ./start.sh

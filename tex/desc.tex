@@ -138,29 +138,29 @@
 	
 \begin{document}
 
-\section*{Knapsack}
+\section*{Рюкзак}
 
 \fbox{\begin{minipage}{35em}
-\textbf{Given:}
+\textbf{Дано:}
 \begin{itemize}
-	\item weights $w[i] \text{, } i=\overline{1,n}$ 
-	\item values $c[i] \text{, } i=\overline{1,n}$ 
-	\item $W$ - maximum wight, capacity of teh knapsack 
+	\item веса $w[i] \text{, } i=\overline{1,n}$ 
+	\item стоимтости $c[i] \text{, } i=\overline{1,n}$ 
+	\item $W$ - максимальный вес, вместимость рюкзака
 \end{itemize}
 
-\textbf{Find subset of items I such that:}
+\textbf{Найдите подмножество элементов I такое, что:}
 \begin{itemize}
-	\item The total weight of items in $I$ does not exceed $W$, $\sum_{i \in I} w[i] \leq W$
-	\item The total vlue of items in $I$ is maximized $W$, $max_{I \subset \{1, \dots, n\}} \sum_{i \in I} c[i] $
+	\item Общий вес предметов в $I$ не превышает $W$, $\sum_{i \in I} w[i] \leq W$
+	\item Общая стоимость элементов в $I$ максимальна $W$, $max_{I \subset \{1, \dots, n\}} \sum_{i \in I} c[i] $
 \end{itemize}
 \end{minipage}}
 
-\section*{Base knapsack solution}
+\section*{Базовое решение для рюкзака}
 
 \begin{itemize}
-	\item[-] $dp[i][с]$ - stores the minimal achievable weight for the first $i$ elements with values c.
+	\item[-] $dp[i][c]$ - сохраняет минимально достижимый вес для первого $i$ элементы со значениями $c$.
 	\item[-] $0 \leq i \leq n$, $0 \leq c \leq C$ 
-	\item[-] dp recalc: \\
+	\item[-] dp пересчет: \\
 	\[
 	dp[i][c] =
 	\begin{cases} 
@@ -171,39 +171,56 @@
 
 \end{itemize}
 
-\textbf{final asymptotics: $\underline{O}(n * C_{max})$}
+\textbf{Итоговая ассимптотика: $\underline{O}(n * C_{max})$}
 
-\section*{Approximation polynomial knapsack}
+\section*{Аппроксимационный полиномиальный рюкзак}
 
 \fbox{\begin{minipage}{35em}
 \textbf{Given:}
 \begin{itemize}
-	\item weights $w[i] \text{, } i=\overline{1,n}$ 
-	\item values $c[i] \text{, } i=\overline{1,n}$ 
-	\item $W$ - maximum weights, capacity of the knapsack 
-	\item $\varepsilon$ - acceptable error.
+	\item веса $w[i] \text{, } i=\overline{1,n}$ 
+	\item стоимости $c[i] \text{, } i=\overline{1,n}$ 
+	\item $W$ - максимальный вес, вместимость рюкзака
+	\item $\varepsilon$ - допустимая ошибка.
 \end{itemize}
 
-\textbf{Find subset of items I such that:}
+\textbf{Найдите подмножество элементов I такое, что:}
 \begin{itemize}
-	\item The total weight of items in $I$ does not exceed $W$, $\sum_{i \in I} w[i] \leq W$
-	\item Maximum the total vlue of items in $I$ differs from the real answer by no more than $1+\varepsilon$
-	\item The algorithm works in polynomial asymptotics.
+	\item Общий вес предметов в $I$ не превышает $W$, $\sum_{i \in I} w[i] \leq W$
+	\item Максимальная общая стоимость предметов в $I$ отличается от реального ответа не более чем на $1+\varepsilon$
+	\item Алгоритм работает в полиномиальной асимптотике.
 \end{itemize}
 \end{minipage}}
 
-\section*{Approximated polynomial solution}
+\section*{Приближенное полиномиальное решение}
 
 \begin{enumerate}
-	\item Find $K = \frac{\varepsilon * C_{max}}{n}$, $C_{max} = max_{i=\overline{1,n}} c[i]$
+	\item Найдем $K = \frac{\varepsilon * C_{max}}{n}$, $C_{max} = max_{i=\overline{1,n}} c[i]$
 	\item $c^{'}[i] = \lfloor{\frac{c[i]}{K}} \rfloor$
-	\item Solve based knapsack problem with $c^{'}[i]$
+	\item Решите задачу о рюкзаке с помощью $c^{'}[i]$
 \end{enumerate}
 
-\textbf{final asymptotics: $\underline{O}(n^2 \lfloor \frac{C_{max}}{K} \rfloor) = \underline{O}(n^2 \lfloor \frac{n}{\varepsilon} \rfloor)$}
+\textbf{окончательная асимптотика: $\underline{O}(n^2 \lfloor \frac{C_{max}}{K} \rfloor) = \underline{O}(n^2 \lfloor \frac{n}{\varepsilon} \rfloor)$}
 
-\textbf{Correct:} 
-\url{https://math.mit.edu/~goemans/18434S06/knapsack-katherine.pdf}.
+\textbf{Корректность:} 
+Пусть $S^{'}$ - множество предметов который мы взяли в работе полиномиального алгоритма. Докажем следующую лемму. \\
+\textbf{Лемма} 
+$C(S^{'}) \geq (1 -\varepsilon ) * OPT$, где $OPT$ - это правильный ответ, $C(S)$ - возвращает суммарную стоимость предметов из множества $S$: $C(S) = \sum_{i \in S} c[i]$
+\begin{proof}
+	Пусть $C^{'}(S)$ - это сумма стоимомтей измененных объектов: $C^{'}(S) = \sum_{i \in S} c^{'}[i]$
+
+	Пусть $S$ - это оптимальный набор, то есть $C(S) = OPT$. После проведения преобразований с объектами, их стоимости будут разделены на $K$ и округлены в меншьшую сторону. Тогда для каждого отдельного объекта $a$ верно: $K*c^{'}[a] \leq c[a]$.
+
+	Тогда для множества $S$ в целом, применяя это неравенство к каждому его объекту имеем: 
+	$$ C(S) - K * C^{'}(S) \leq n * K \ (*)$$
+
+	После решения задачи о рюкзаке для измененного набора данных мы получаем ответ множество $S^{'}$. После шага динамического программирования мы получаем набор, который является оптимальным для масштабируемого экземпляра
+	и, следовательно, должен быть по крайней мере таким же хорошим, как выбор набора $S$ с меньшей прибылью:
+	$$C(S^{'}) \geq K * C^{'}(S)\ (**)$$
+
+	Далее из $(*),\ (**)$ получаем: $C(S^{'}) \geq K * C^{'}(S) \geq C(S) - n * K \geq OPT - \varepsilon * C_{max} \geq (1 - \varepsilon)*OPT$, так как $OPT \geq C_{max}$, если это не так то мы просто можем выкинуть объект максимальной стоимости из рассмотрения.
+\end{proof}
+% \url{https://math.mit.edu/~goemans/18434S06/knapsack-katherine.pdf}.
 
 
 \end{document}
